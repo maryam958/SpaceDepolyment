@@ -45,9 +45,9 @@ app.use(`${process.env.baseURL}/room`, indexRouter.roomRouter);
 app.use(`${process.env.baseURL}/booking`, indexRouter.bookingRouter);
 app.use(`${process.env.baseURL}/favorite`, indexRouter.favoriteRouter);
 
-// app.use("*", (req, res, next) => {
-//   res.send("In-valid Routing Plz check url  or  method");
-// });
+app.use("*", (req, res, next) => {
+  res.send("In-valid Routing Plz check url  or  method");
+});
 
 app.use(globalError);
 
