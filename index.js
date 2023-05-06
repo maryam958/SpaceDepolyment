@@ -16,6 +16,7 @@ import morgan from "morgan";
 //Express
 const app = express();
 
+const port =process.env.PORT 
 
 
 app.use(express.json());
@@ -37,12 +38,12 @@ app.get('/',(req,res)=>{
 })
 
 
-app.use(`${process.env.baseURL}/user`, indexRouter.userRouter);
-app.use(`${process.env.baseURL}/auth`, indexRouter.authRouter);
-app.use(`${process.env.baseURL}/workingSpace`, indexRouter.workingSpaceRouter);
-app.use(`${process.env.baseURL}/room`, indexRouter.roomRouter);
-app.use(`${process.env.baseURL}/booking`, indexRouter.bookingRouter);
-app.use(`${process.env.baseURL}/favorite`, indexRouter.favoriteRouter);
+app.use(`${process.env.BASEURL}/user`, indexRouter.userRouter);
+app.use(`${process.env.BASEURL}/auth`, indexRouter.authRouter);
+app.use(`${process.env.BASEURL}/workingSpace`, indexRouter.workingSpaceRouter);
+app.use(`${process.env.BASEURL}/room`, indexRouter.roomRouter);
+app.use(`${process.env.BASEURL}/booking`, indexRouter.bookingRouter);
+app.use(`${process.env.BASEURL}/favorite`, indexRouter.favoriteRouter);
 
 app.use("*", (req, res) => {
   res.send("In-valid Routing Plz check url  or  method");
@@ -51,8 +52,5 @@ app.use("*", (req, res) => {
 app.use(globalError);
 
 connection();
-
-
-const port =process.env.PORT 
 
 app.listen(port, () =>  console.log(`Server is running on port ${port}`));
