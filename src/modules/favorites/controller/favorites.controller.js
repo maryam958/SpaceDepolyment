@@ -1,4 +1,4 @@
-import { findById, findByIdAndUpdate } from "../../../../Database/DBMethods.js";
+import { find, findById, findByIdAndUpdate } from "../../../../Database/DBMethods.js";
 import { workSpaceModel } from "../../../../Database/model/workSpace.model.js";
 import { userModel } from "../../../../Database/model/user.model.js";
 import { asyncHandler } from "../../../services/asyncHandler.js";
@@ -45,6 +45,6 @@ export const getFavorites = asyncHandler(async (req, res, next) => {
   if (!founded) {
     return next(new Error("user not found", { cause: 404 }));
   }
-  let favorites = founded.favorites;
+  let favorites = founded.favorites.populate();
   return res.status(200).json({ message: "Done", favorites });
 });
