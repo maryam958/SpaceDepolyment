@@ -49,5 +49,5 @@ export const getFavorites = asyncHandler(async (req, res, next) => {
     return next(new Error("user not found", { cause: 404 }));
   }
   // let favorites = founded.favorites
-  return res.status(200).json({ message: "Done", ws });
+  return res.status(200).json({ message: "Done", founded });
 });
