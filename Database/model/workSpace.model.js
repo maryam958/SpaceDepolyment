@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
-// kol el composite attributes 3amaltelha schema lwa7daha
-// badal ma akhaly el model kolo f schema wa7da 7ases keda a7san w as-hal
+
 const scheduleSchema = new mongoose.Schema({
   holidays: [
     {
