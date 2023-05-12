@@ -117,13 +117,11 @@ export const avgRate = asyncHandler(async (req, res, next) => {
 });
 
 export const searchByRate = asyncHandler(async (req, res, next) => {
-  let { avgRate } = req.query;
-
+  let { rate } = req.params;
   const WsRate = await find({
-    model: workSpaceModel,
-    condition: { avgRate },
+    model: reviewModel,
+    condition: { rating: rate },
   });
-
   if (WsRate.length) {
     return res.status(200).json({ message: "founded", WsRate });
   } else {
@@ -132,7 +130,6 @@ export const searchByRate = asyncHandler(async (req, res, next) => {
       .json({ message: "not founded WorkSpace have this rate" });
   }
 });
-
 
 
 
