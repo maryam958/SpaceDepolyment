@@ -25,11 +25,7 @@ app.use(cors({}))
 app.use(morgan("common"));
 
 
-// if(process.env.ENV ==="DEV"){
-//   app.use(morgan('dev'))
-// }else{
-//   app.use(morgan('common'))
-// }
+
 
 
 
