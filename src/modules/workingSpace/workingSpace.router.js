@@ -13,7 +13,7 @@ router.get('/searchWorkspacesByName',auth(),workSpaceController.searchWorkspaces
 //Reviews
 router.post('/createReview/:workspaceId',auth(endPoints.createReview),workSpaceController.createReview)
 router.get('/avgRate/:workspaceId',auth(endPoints.avgRate),workSpaceController.avgRate)
-router.get('/searchByRate',workSpaceController.searchByRate)
+router.get('/searchByRate/:rate',workSpaceController.searchByRate)
 router.get('/HighestRate',workSpaceController.HighestRate)
 
 
