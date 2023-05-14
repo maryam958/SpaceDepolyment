@@ -45,6 +45,7 @@ router.patch("/updatePassword",validation(updatePasswordSchema),auth(),userContr
 router.put('/updateProfile/:userId',auth(endPoints.updateProfile),myMulter(fileValidation.image).single("image"),
 HME,userController.updateProfile)
 
+router.post('/UserReportWs/:workspaceId',auth(endPoints.UserReportWs),userController.UserReportWs)
 
 
 
