@@ -159,6 +159,13 @@ export const getBookingsHistoryToUser = asyncHandler(async (req, res, next) => {
   let history = await find({
     model: bookingModel,
     condition: { user: req.user._id },
+    populate: {
+      path: "room",
+      populate: {
+        path: "workspaceId",
+        model: "workSpace",
+      },
+    },
   });
   return res.status(200).json({ message: "Done", history });
 });
