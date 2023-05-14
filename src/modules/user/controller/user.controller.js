@@ -285,42 +285,19 @@ export const updateProfile = asyncHandler(async (req, res, next) => {
 
 
 export const UserReportWs = asyncHandler(async (req, res, next) => {
-  let { workspaceId } = req.params;
-  const foundedWs = await findById({ model: workSpaceModel, id: workspaceId });
-  const workspace = foundedWs.name;
-  const foundedBookings = await find({
-    model: bookingModel,
-    condition: { user: req.user._id },
-  });
-  if (!foundedWs) {
-   return res.status(404).json({ message: " Workspace Not Found" });
-  } else {
-    let hasBooking = false;
-    foundedBookings.forEach((booking) => {
-      if (booking.user.toString() == req.user._id.toString()) {
-        hasBooking = true;
-      }
-    });
-    if (hasBooking) {
-      let { report } = req.body;
-      const savedReport = await reportModel.create(
-         { createdBy: req.user._id,
-          workspace: workspaceId,
-          report,}
-        
-      );
-      (await savedReport.populate('createdBy'));
-      await savedReport.populate('workspace');
+  let {workspaceId}=req.params
+ let { report } = req.body;
+ const savedReport = await reportModel.create(
+    { createdBy: req.user._id,
+     workspace: workspaceId,
+     report,}
+   
+ );
+ await savedReport.populate('createdBy');
+ await savedReport.populate('workspace');
 
-     return res
-        .status(201)
-        .json({ message: "Report created Successfully", savedReport });
-    } else {
-     return res
-        .status(401)
-        .json({
-          message: `you don't make bookings in ${workspace} so you don't have the right to report it`,
-        });
-    }
-  }
+return res
+   .status(201)
+   .json({ message: "Report created Successfully", savedReport });
+
 });
