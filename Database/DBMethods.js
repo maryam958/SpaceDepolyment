@@ -36,8 +36,9 @@ export const findOne = async ({
     condition = {},
     data,
     options = {},
+    populate = []
   } = {}) => {
-    const res = await model.findOneAndUpdate(condition, data, options);
+    const res = await model.findOneAndUpdate(condition, data, options,populate);
     return res;
   };
   
