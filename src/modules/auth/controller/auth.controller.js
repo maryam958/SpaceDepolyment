@@ -185,7 +185,7 @@ export const sendCode = async (req, res) => {
     let OTPCode = nanoid();
     await userModel.findByIdAndUpdate(user._id, { OTPCode });
     let message = `your OTPCode is ${OTPCode}`;
-    sendEmail(user.email, "your OTP Code", message);
+   await sendEmail(user.email, "your OTP Code", message);
     return res.status(200).json({ message: "Done, please check your email" });
   }
 };
