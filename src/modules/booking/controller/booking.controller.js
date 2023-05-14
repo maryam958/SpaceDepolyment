@@ -189,13 +189,13 @@ export const CancelBooking = asyncHandler(async (req, res, next) => {
         model: bookingModel,
         condition: { _id: bookingId, isCancelled: false },
         data: { isCancelled: true },
-        options: { new: true },
-        populate: {
+        options: { new: true,  populate: {
           path: 'room',
           populate: {
             path: 'workspaceId',
             model: 'workSpace'
-          }}
+          }}},
+        
       });
 
       return res
