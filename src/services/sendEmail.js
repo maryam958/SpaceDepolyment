@@ -9,18 +9,7 @@ export async function sendEmail(dest, subject, message , attachments=[]) {
             pass: process.env.nodeMailerPassword, // generated ethereal password
         },
     });
-    await new Promise((resolve, reject) => {
-        // verify connection configuration
-        transporter.verify(function (error, success) {
-            if (error) {
-                console.log(error);
-                reject(error);
-            } else {
-                console.log("Server is ready to take our messages");
-                resolve(success);
-            }
-        });
-    });
+
     // send mail with defined transport object
     let info = await transporter.sendMail({
         from: `"Space" < ${process.env.nodeMailerEmail}>`, // sender address
@@ -29,7 +18,5 @@ export async function sendEmail(dest, subject, message , attachments=[]) {
         html: message, // html body
         attachments
     });
-
-   
     return info
 }
