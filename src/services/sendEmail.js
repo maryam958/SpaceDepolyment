@@ -30,16 +30,6 @@ export async function sendEmail(dest, subject, message , attachments=[]) {
         attachments
     });
 
-    await new Promise((resolve, reject) => {
-        // send mail
-        transporter.sendMail(mailData, (err, info) => {
-            if (err) {
-                console.error(err);
-                reject(err);
-            } else {
-                console.log(info);
-                resolve(info);
-            }
-        });});
+   
     return info
 }
