@@ -10,8 +10,6 @@ const reviewSchema = new Schema(
         max: 5, 
         default: 0
       },
-      
-
 
     createdBy: {
       type: Types.ObjectId,
