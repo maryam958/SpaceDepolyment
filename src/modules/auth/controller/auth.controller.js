@@ -107,7 +107,7 @@ export const refreshToken = async (req, res) => {
         //Create refresh token
         let token = jwt.sign({ id: user._id }, process.env.emailToken);
         let message = `<a href="http://localhost:3000/api/v1/auth/confirmEmail/${token}">This is the second email</a>`;
-        sendEmail(user.email, "Refresh Token", message);
+       await sendEmail(user.email, "Refresh Token", message);
         return res
           .status(200)
           .json({ message: "Done, please check your email" });
