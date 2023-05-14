@@ -189,13 +189,7 @@ export const CancelBooking = asyncHandler(async (req, res, next) => {
         model: bookingModel,
         condition: { _id: bookingId, isCancelled: false },
         data: { isCancelled: true },
-        options: { new: true,  populate: {
-          path: 'room',
-          populate: {
-            path: 'workspaceId',
-            model: 'workSpace'
-          }}},
-        
+        options: { new: true },
       });
 
       return res
@@ -218,11 +212,12 @@ export const cancelledBookingsHistoryToUser = asyncHandler(
       model: bookingModel,
       condition: { user: req.user._id, isCancelled: true },
       populate: {
-        path: 'room',
+        path: "room",
         populate: {
-          path: 'workspaceId',
-          model: 'workSpace'
-        }}
+          path: "workspaceId",
+          model: "workSpace",
+        },
+      },
     });
     return res.status(200).json({ message: "Done", history });
   }
