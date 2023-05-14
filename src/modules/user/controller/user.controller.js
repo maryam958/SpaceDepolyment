@@ -17,6 +17,7 @@ import { asyncHandler } from "../../../services/asyncHandler.js";
 import cloudinary from "../../../services/cloudinary.js";
 import path from "path";
 import bcrypt from "bcryptjs";
+import reportModel from "../../../../Database/model/report.model.js";
 
 //Owner
 export const addWsByFillForm = asyncHandler(async (req, res, next) => {
