@@ -310,6 +310,10 @@ export const UserReportWs = asyncHandler(async (req, res, next) => {
           workspace: workspaceId,
           report,
         },
+        populate: {
+          path: 'createdBy',
+          
+        },
       });
      return res
         .status(201)
