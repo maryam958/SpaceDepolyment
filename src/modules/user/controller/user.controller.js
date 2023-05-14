@@ -303,18 +303,15 @@ export const UserReportWs = asyncHandler(async (req, res, next) => {
     });
     if (hasBooking) {
       let { report } = req.body;
-      const savedReport = await create({
-        model: reportModel,
-        data: {
-          createdBy: req.user._id,
+      const savedReport = await reportModel.create(
+         { createdBy: req.user._id,
           workspace: workspaceId,
-          report,
-        },
-        populate: {
-          path: 'createdBy',
-          
-        },
-      });
+          report,}
+        
+      );
+      (await savedReport.populate('createdBy'));
+      await savedReport.populate('workspace');
+
      return res
         .status(201)
         .json({ message: "Report created Successfully", savedReport });
