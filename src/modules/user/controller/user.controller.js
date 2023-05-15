@@ -308,3 +308,29 @@ export const UserReportWs = asyncHandler(async (req, res, next) => {
 
 
 });
+
+
+
+
+//for admin
+export const getWsRequests = asyncHandler(async (req, res, next) => {
+  let workspaces = await find({ model: workSpaceModel });
+ 
+  let unvalidatedOwners = [];
+  for (let i = 0; i < workspaces.length; i++) {
+    let workspace = workspaces[i];
+    let ownerId = workspace.ownerId;
+  
+    let owners = await find({ model: userModel, condition: { _id: { $in: [ownerId] }, role: "Owner", adminValidation: false }});
+    
+    if (owners.length > 0) {
+      unvalidatedOwners = [...unvalidatedOwners, ...owners];
+    }
+  }
+
+  let unvalidatedWorkspaces = workspaces.filter(ws => {
+    return unvalidatedOwners.some(owner => owner._id.equals(ws.ownerId));
+  });
+
+  res.status(200).json({ message: "done", unvalidatedWorkspaces });
+});
