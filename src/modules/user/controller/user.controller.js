@@ -287,17 +287,24 @@ export const updateProfile = asyncHandler(async (req, res, next) => {
 export const UserReportWs = asyncHandler(async (req, res, next) => {
   let {workspaceId}=req.params
  let { report } = req.body;
- const savedReport = await reportModel.create(
-    { createdBy: req.user._id,
-     workspace: workspaceId,
-     report,}
-   
- );
- await savedReport.populate('createdBy');
- await savedReport.populate('workspace');
+ if(!report){
+   return res
+   .status(404)
+   .json({ message: "Please enter your report", savedReport });
+ }else{
+   const savedReport = await reportModel.create(
+     { createdBy: req.user._id,
+      workspace: workspaceId,
+      report,}
+    
+  );
+  await savedReport.populate('createdBy');
+  await savedReport.populate('workspace');
 
-return res
-   .status(201)
-   .json({ message: "Report created Successfully", savedReport });
+ return res
+    .status(201)
+    .json({ message: "Report created Successfully", savedReport });
+ }
+
 
 });
