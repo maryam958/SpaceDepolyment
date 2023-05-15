@@ -290,7 +290,7 @@ export const UserReportWs = asyncHandler(async (req, res, next) => {
  if(!report){
    return res
    .status(404)
-   .json({ message: "Please enter your report", savedReport });
+   .json({ message: "Please enter your report" });
  }else{
    const savedReport = await reportModel.create(
      { createdBy: req.user._id,
