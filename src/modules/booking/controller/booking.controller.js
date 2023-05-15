@@ -281,7 +281,7 @@ if(req.body.isDone =="true"){
   const falseMissed = await findByIdAndUpdate({
     model: bookingModel,
    condition: { _id: bookingId, isUpcoming: true ,isDone:false},
-    data: { isUpcoming: false,
+    data: { isUpcoming: true,
             isMissed: false,
        },
     options: { new: true },
