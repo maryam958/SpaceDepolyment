@@ -6,7 +6,6 @@ const router= Router();
 
 router.get('/getAllWsRooms',auth(endPoints.getAllWsRooms),workSpaceController.getAllWsRooms)
 router.get('/getWorkSpaces',auth(),workSpaceController.getWorkSpaces)
-router.get('/getBookingHistoryToWsOwner',auth(endPoints.getBookingHistoryToWsOwner),workSpaceController.getBookingHistoryToWsOwner)
 router.get('/searchWorkspacesByName',auth(endPoints.searchWorkspacesByName),workSpaceController.searchWorkspacesByName)
 router.get('/searchWorkspacesByRegion',auth(),workSpaceController.searchWorkspacesByRegion)
 
