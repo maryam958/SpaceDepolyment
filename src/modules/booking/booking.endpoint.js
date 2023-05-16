@@ -10,5 +10,7 @@ export const endPoints={
     getBookingsHistoryToUser:[roles.User],
 
     CancelBooking:[roles.User,roles.Owner],
-    cancelledBookingsHistoryToUser:[roles.User]
+    cancelledBookingsHistoryToUser:[roles.User],
+
+    getUpcomingBookingsToWs:[roles.Owner]
 }

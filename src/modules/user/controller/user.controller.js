@@ -334,3 +334,20 @@ export const getWsRequests = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({ message: "done", unvalidatedWorkspaces });
 });
+
+
+//search for a user
+export const searchUser = asyncHandler(async (req, res, next) => {
+  let { user } = req.query;
+  let users = await find({
+    model: userModel,
+    condition: {
+      $or: [
+        { firstName: { $regex: user, $options: "i" } },
+        { lastName: { $regex: user, $options: "i" } },
+        { email: { $regex: user, $options: "i" } },
+      ],
+    },
+  });
+  res.status(200).json({ message: "done", users });
+} );

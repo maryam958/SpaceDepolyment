@@ -17,7 +17,10 @@ export const endPoints={
   
     updateProfile:[roles.User,roles.Owner,roles.Owner],
     
-    UserReportWs:[roles.User]
+    UserReportWs:[roles.User],
+
+    
+    searchUser:[roles.Admin]
    
 
 
