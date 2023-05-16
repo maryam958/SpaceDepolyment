@@ -299,6 +299,6 @@ if(req.body.isDone =="true"){
   
 export const getUpcomingBookings=asyncHandler(async(req,res,next)=>{
   let user=await findById({model:userModel,id:req.user._id})
-  let bookings=await find({model:bookingModel,condition:{user,isUpcoming:true}})
+  let bookings=await find({model:bookingModel,condition:{user,isUpcoming:true},populate:'room'})
  return res.status(200).json({message:"Done",bookings})
 })
