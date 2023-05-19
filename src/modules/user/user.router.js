@@ -88,4 +88,6 @@ router.get('/getWsRequests',auth(endPoints.getWsRequests),userController.getWsRe
 router.get('/searchUser',auth(endPoints.searchUser),userController.searchUser)
 
 
+router.get('/getUserProfile',auth(),userController.getUserProfile)
+
 export default router;

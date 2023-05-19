@@ -351,3 +351,14 @@ export const searchUser = asyncHandler(async (req, res, next) => {
   });
   res.status(200).json({ message: "done", users });
 } );
+
+
+
+export const getUserProfile = asyncHandler(async (req, res, next) => {
+  // get user from req.user
+  let user = await findById({ model: userModel, id: req.user._id });
+  if (!user) {
+    return next(new Error("User not found", { cause: 404 }));
+  }
+  return res.status(200).json({ message: "Done", user });
+});
