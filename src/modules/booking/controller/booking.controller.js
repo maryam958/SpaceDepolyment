@@ -125,6 +125,7 @@ export const createBooking = asyncHandler(async (req, res, next) => {
       duration: calculatedDuration,
       price: cost,
     },
+    populate:'room'
   });
 
   return res.status(201).json({ message: "Done", addedBooking });
