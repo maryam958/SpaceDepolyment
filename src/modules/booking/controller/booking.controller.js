@@ -126,7 +126,8 @@ export const createBooking = asyncHandler(async (req, res, next) => {
       price: cost,
     },
     populate:{
-     path: 'room'}
+     path: 'room',
+    model:'room'}
   });
 
   return res.status(201).json({ message: "Done", addedBooking });
