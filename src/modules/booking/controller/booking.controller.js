@@ -154,12 +154,12 @@ export const getBookingsHistoryToWs = asyncHandler(async (req, res, next) => {
         model: bookingModel,
         condition: { room: { $in: roomIds } },
 
-        populate:'room',
-        populate:"user"
-// =======
-//         populate: { path: "room", model: "room", select: "roomNumber roomName" }, populate: {path: "user", model: "user", select: "userName"},
+        // populate:'room',
+        // populate:"user"
+
+        populate: { path: "room", model: "room", select: "roomNumber roomName" }, populate: {path: "user", model: "user", select: "userName"},
         
-// >>>>>>> e721de030b2f7f6d79d3966c407e23adfced9c3f
+
       });
     
       return res.status(200).json({ message: "Done", history });
