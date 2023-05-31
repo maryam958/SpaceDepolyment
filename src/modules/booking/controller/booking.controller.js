@@ -153,7 +153,7 @@ export const getBookingsHistoryToWs = asyncHandler(async (req, res, next) => {
       let history = await find({
         model: bookingModel,
         condition: { room: { $in: roomIds } },
-        
+        populate:'room'
       });
     
       return res.status(200).json({ message: "Done", history });
