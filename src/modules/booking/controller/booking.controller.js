@@ -154,11 +154,12 @@ export const getBookingsHistoryToWs = asyncHandler(async (req, res, next) => {
         model: bookingModel,
         condition: { room: { $in: roomIds } },
 
-        // populate:'room',
-        // populate:"user"
+    
 
-        populate: { path: "room", model: "room", select: "roomNumber roomName" }, populate: {path: "user", model: "user", select: "userName"},
-        
+        populate: [
+          { path: "room", model: "room", select: "roomNumber roomName" },
+          { path: "user", model: "user", select: "userName" }
+        ]
 
       });
     
