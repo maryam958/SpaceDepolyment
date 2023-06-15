@@ -318,7 +318,8 @@ export const getWsRequests = asyncHandler(async (req, res, next) => {
 
   let workspaces = await workSpaceModel.find().populate({
     path: 'ownerId',
-    model: 'user'
+    model: 'user',
+    match: { role: 'User', adminValidation: false }
   });
  
   let unvalidatedOwners = [];
