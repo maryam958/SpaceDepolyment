@@ -5,7 +5,7 @@ import { endPoints } from "./workingSpace.endpoint.js";
 const router= Router();
 
 router.get('/getAllWsRooms',auth(endPoints.getAllWsRooms),workSpaceController.getAllWsRooms)
-router.get('/getWorkSpaces',auth(),workSpaceController.getWorkSpaces)
+router.get('/getWorkSpaces',auth(endPoints.getWorkSpaces),workSpaceController.getWorkSpaces)
 router.get('/searchWorkspacesByName',auth(endPoints.searchWorkspacesByName),workSpaceController.searchWorkspacesByName)
 router.get('/searchWorkspacesByRegion',auth(),workSpaceController.searchWorkspacesByRegion)
 

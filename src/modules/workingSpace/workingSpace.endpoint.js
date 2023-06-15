@@ -6,6 +6,8 @@ export const endPoints={
     avgRate:[roles.User,roles.Admin,roles.Owner],
 
     getAllWsRooms:[roles.User,roles.Admin],
-    searchWorkspacesByName:[roles.User,roles.Admin]
+    searchWorkspacesByName:[roles.User,roles.Admin],
+
+    getWorkspaces:[roles.User,roles.Admin]
 
 }
