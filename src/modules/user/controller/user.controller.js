@@ -314,13 +314,8 @@ export const UserReportWs = asyncHandler(async (req, res, next) => {
 
 //for admin
 export const getWsRequests = asyncHandler(async (req, res, next) => {
-  // let workspaces = await workSpaceModel.find()
-
-  let workspaces = await workSpaceModel.find().populate({
-    path: 'ownerId',
-    model: 'user',
-    match: { role: 'User', adminValidation: false }
-  });
+  let workspaces = await workSpaceModel.find()
+  
  
   let unvalidatedOwners = [];
   for (let i = 0; i < workspaces.length; i++) {
