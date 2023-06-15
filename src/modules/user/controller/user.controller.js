@@ -330,7 +330,7 @@ export const getWsRequests = asyncHandler(async (req, res, next) => {
   }
 
   let unvalidatedWorkspaces = workspaces.filter(ws => {
-    return unvalidatedOwners.some(owner => owner._id.equals(ws.ownerId));
+    return unvalidatedOwners.some(owner => owner._id.equals(ws.ownerId)).populate('ownerId');
   });
 
   res.status(200).json({ message: "done", unvalidatedWorkspaces });
