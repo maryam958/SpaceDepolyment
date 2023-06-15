@@ -314,7 +314,7 @@ export const UserReportWs = asyncHandler(async (req, res, next) => {
 
 //for admin
 export const getWsRequests = asyncHandler(async (req, res, next) => {
-  let workspaces = await find({ model: workSpaceModel ,populate:"ownerId"});
+  let workspaces = await workSpaceModel.find().populate('ownerId')
  
   let unvalidatedOwners = [];
   for (let i = 0; i < workspaces.length; i++) {
