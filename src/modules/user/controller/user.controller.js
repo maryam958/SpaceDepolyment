@@ -178,7 +178,7 @@ export const deleteClientAccountByAdmin = asyncHandler(
 //get &delete WS {admin}
 export const getWorkSpaceByAdmin = asyncHandler(async (req, res, next) => {
   let { WorkSpaceId } = req.params;
-  const WS = await findById({ model: workSpaceModel, id: WorkSpaceId });
+  const WS = await findById({ model: workSpaceModel, id: WorkSpaceId ,populate:'ownerId'});
   if (WS) {
     return res.json({ message: "Founded", WS });
   } else {
